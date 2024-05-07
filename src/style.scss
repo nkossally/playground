@@ -16,7 +16,7 @@ code {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   // align-items: center;
   // justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -58,12 +58,41 @@ q .toggle-container {
 }
 
 .toggle-button {}
-.option-title{
-  
-}
+
+.option-title {}
 
 .options-container {}
 
 .options-buttons {}
 
 .option-button {}
+
+.all-options-container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 20px;
+}
+
+.start {
+  justify-content: start;
+}
+
+.center {
+  justify-content: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.end {
+  justify-content: end;
+}
