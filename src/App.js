@@ -1,12 +1,13 @@
 import { useState } from "react";
 import classNames from "classnames";
+import { Options } from "./components/Options";
 
 import "./style.scss";
 
-const FLEX_DIRECTIONS = { row: "row", col: "col" };
+const FLEX_DIRECTIONS =  ["row", "column"]
 
 function App() {
-  const [flexDirection, setFlexDirection] = useState(FLEX_DIRECTIONS.row);
+  const [flexDirection, setFlexDirection] = useState(FLEX_DIRECTIONS[0]);
 
   const setFlexDirectionWrapper = (dir) => {
     return () => setFlexDirection(dir);
@@ -14,14 +15,8 @@ function App() {
 
   return (
     <div className="App">
-      <div className={"toggle-container"}>
-        <button className="toggle-button" onClick={setFlexDirectionWrapper(FLEX_DIRECTIONS.row)}>
-          row
-        </button>
-        <button className="toggle-button" onClick={setFlexDirectionWrapper(FLEX_DIRECTIONS.col)}>
-          col
-        </button>
-      </div>
+      <Options title="flex-direction" options={FLEX_DIRECTIONS} setOption={setFlexDirection} />
+
 
       <div></div>
 
