@@ -1,5 +1,13 @@
-import { useState } from "react";
 import classNames from "classnames";
+
+const OPTION_TO_LABEL = {
+  "align-content-start": "start",
+  "align-content-center": "center",
+  "align-content-space-between": "space-between",
+  "align-content-space-around": "space-around",
+  "align-content-space-evenly": "space-evenly",
+  "align-content-end ": "end",
+};
 
 export const Options = ({ title, options, setOption, currentOption }) => {
   const setOptionWrapper = (option) => {
@@ -15,9 +23,12 @@ export const Options = ({ title, options, setOption, currentOption }) => {
             <button
               key={`${options}${idx}`}
               onClick={setOptionWrapper(option)}
-              className={classNames("option-button", currentOption === option ? "highlight" : "" )}
+              className={classNames(
+                "option-button",
+                currentOption === option ? "highlight" : ""
+              )}
             >
-              {option}
+              {OPTION_TO_LABEL[option] ? OPTION_TO_LABEL[option]: option}
             </button>
           );
         })}
