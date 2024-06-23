@@ -23,26 +23,14 @@ code {
   padding: 20px 20px;
 }
 
-.blocks {
-  display: flex;
-  background-color: #df4336;
-  border: 1px solid #36d2df;
-  width: calc(50% - 20px);
-  // margin: 20px 20px;
-  flex-wrap: wrap;
-
-
-  height: 400px;
-}
-
 .block {
   width: 100px !important;
   height: 50px;
-  background-color: #36d2df ;
+  background-color: #df4336;
   margin: 5px 5px 5px 5px;
   border-radius: 2px;
   justify-content: space-evenly;
-
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .row {
@@ -54,7 +42,7 @@ code {
 }
 
 .highlight {
-  background-color: yellow;
+  background-color: #36d2df;
 }
 
 q .toggle-container {
@@ -68,7 +56,16 @@ q .toggle-container {
 
 .options-buttons {}
 
-.option-button {}
+.option-button {
+  margin: 1px 1px;
+  // background-color: #36d2df;
+  border: 1px solid #36d2df;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.option-button:hover {
+  background-color: #36d2df;
+}
 
 .all-options-container {
   display: flex;
@@ -127,9 +124,7 @@ q .toggle-container {
 
 .flex-parent{
   display: flex;
-  width: 100%;
-  height: 300px;
-  border: 2px solid pink;
+  margin: 20px 20px;
 }
 
 .child{
@@ -137,7 +132,7 @@ q .toggle-container {
   flex-shrink: 1;
   flex-basis: auto;
   height: 100px;
-  border: 2px solid green;
+  border: 2px solid #df4336;
 }
 
 .child-3{
@@ -155,6 +150,10 @@ q .toggle-container {
 
 .input-label{
   margin: 0px 5px 0px 5px;
-font-size: calc(5px + 2vmin);
+}
+
+.flex-input{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: none;
 
 }

@@ -33,15 +33,16 @@ function App() {
   const blocksContainerStyle = useMemo(
     () => ({
       display: "flex",
-      "backgroundColor": "#df4336",
-      border: "1px solid #36d2df",
+      "backgroundColor": "#36d2df",
       width: "calc(50% - 20px)",
-      height: "400px",
+      height: "300px",
       "flexDirection": flexDirection,
       "justifyContent": justifyContent,
       "alignContent": alignContent,
       //  align-content property is not possible when flex-wrap is no wrap
       "flexWrap": "wrap",
+      "borderRadius": "10px",
+      "boxShadow": "rgba(0, 0, 0, 0.35) 0px 5px 15px",
     }),
     [flexDirection, justifyContent, alignContent]
   );
