@@ -20,7 +20,10 @@ code {
 .flex-alignments-section{
   display: flex;
   flex-direction: row;
-  padding: 20px 20px;
+}
+
+.flex-alignments-section-container{
+  margin: 30px 30px;
 }
 
 .block {
@@ -124,7 +127,7 @@ q .toggle-container {
 
 .flex-parent{
   display: flex;
-  margin: 20px 20px;
+  margin: 30px 30px;
 }
 
 .child{
@@ -156,4 +159,12 @@ q .toggle-container {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border: none;
 
+}
+
+.section-title{
+  display: flex;
+  justify-content: center;
+  letter-spacing: 1px;
+  margin: 20px 0px;
+  font-size: calc(12px + 2vmin);
 }
