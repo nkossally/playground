@@ -32,6 +32,7 @@ export const FlexSection = () => {
       flexWrap: "wrap",
       borderRadius: "10px",
       boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+      marginLeft: "20px"
     }),
     [flexDirection, justifyContent, alignContent]
   );

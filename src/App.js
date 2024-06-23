@@ -1,5 +1,5 @@
-import { FlexChild } from "./components/FlexChild";
 import { FlexSection } from "./sections/FlexSection";
+import { FlexGrowAndShrinkSection } from "./sections/FlexGrowAndShrinkSection";
 import "./style.scss";
 
 function App() {
@@ -7,11 +7,7 @@ function App() {
     <div className="App">
       <FlexSection />
 
-      <div className="flex-parent">
-        <FlexChild />
-        <FlexChild />
-        <FlexChild />
-      </div>
+      <FlexGrowAndShrinkSection />
     </div>
   );
 }
