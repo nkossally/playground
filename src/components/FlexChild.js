@@ -23,7 +23,7 @@ export const FlexChild = () => {
       border: "2px solid green",
       margin: "0px 5px 0px 5px",
       "backgroundColor": "#36d2df",
-      "border-radius": 5,
+      "borderRadius": 5,
 
 
     }),

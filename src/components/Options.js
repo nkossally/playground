@@ -28,7 +28,7 @@ export const Options = ({ title, options, setOption, currentOption }) => {
                 currentOption === option ? "highlight" : ""
               )}
             >
-              {OPTION_TO_LABEL[option] ? OPTION_TO_LABEL[option]: option}
+              { option}
             </button>
           );
         })}

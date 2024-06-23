@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo, useEffect } from "react";
 import classNames from "classnames";
 import { Options } from "./components/Options";
 import { FlexChild } from "./components/FlexChild";
@@ -14,12 +14,12 @@ const CONTENT_JUSTIFICATIONS = [
   "space-evenly",
 ];
 const CONTENT_ALIGNMENTS = [
-  "align-content-start",
-  "align-content-center",
-  "align-content-end ",
-  "align-content-space-between",
-  "align-content-space-around",
-  "align-content-space-evenly",
+  "start",
+  "center",
+  "end ",
+  "space-between",
+  "space-around",
+  "space-evenly",
 ];
 
 function App() {
@@ -28,6 +28,23 @@ function App() {
     CONTENT_JUSTIFICATIONS[0]
   );
   const [alignContent, setAlignContent] = useState(CONTENT_ALIGNMENTS[0]);
+
+
+  const blocksContainerStyle = useMemo(
+    () => ({
+      display: "flex",
+      "backgroundColor": "#df4336",
+      border: "1px solid #36d2df",
+      width: "calc(50% - 20px)",
+      height: "400px",
+      "flexDirection": flexDirection,
+      "justifyContent": justifyContent,
+      "alignContent": alignContent,
+      //  align-content property is not possible when flex-wrap is no wrap
+      "flexWrap": "wrap",
+    }),
+    [flexDirection, justifyContent, alignContent]
+  );
 
   return (
     <div className="App">
@@ -54,12 +71,7 @@ function App() {
         </div>
 
         <div
-          className={classNames(
-            flexDirection,
-            justifyContent,
-            alignContent,
-            "blocks"
-          )}
+          style={blocksContainerStyle}
         >
           <div className="block" key="block1">
             {" "}
