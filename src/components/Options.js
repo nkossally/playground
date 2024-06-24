@@ -17,7 +17,7 @@ export const Options = ({ title, options, setOption, currentOption }) => {
   return (
     <div className="options-container">
       <div className="option-title"> {title}</div>
-      <div className="options-buttons">
+      <div>
         {options.map((option, idx) => {
           return (
             <button

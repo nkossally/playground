@@ -27,7 +27,7 @@ code {
 }
 
 .block {
-  width: 100px !important;
+  width: 100px ;
   height: 50px;
   background-color: #df4336;
   margin: 5px 5px 5px 5px;
@@ -53,17 +53,22 @@ q .toggle-container {
   flex-direction: row;
 }
 
-.option-title {}
+.option-title {
+
+}
 
 .options-container {}
 
-.options-buttons {}
+.options-container:not(last-of-type) {
+  margin-bottom: 10px;
+}
+
 
 .option-button {
   margin: 1px 1px;
-  // background-color: #36d2df;
   border: 1px solid #36d2df;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 5px;
 }
 
 .option-button:hover {
@@ -127,27 +132,13 @@ q .toggle-container {
 
 .flex-parent{
   display: flex;
-  margin: 30px 30px;
-}
-
-.child{
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: auto;
-  height: 100px;
-  border: 2px solid #df4336;
-}
-
-.child-3{
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: auto;
-  height: 100px;
-  border: 2px solid green;
+  margin: 10px 30px;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-input{
-  width: 180px;
+  width: 170px;
   margin: 5px 5px 5px 5px;
 }
 
@@ -167,4 +158,18 @@ q .toggle-container {
   letter-spacing: 1px;
   margin: 20px 0px;
   font-size: calc(12px + 2vmin);
+}
+
+@media screen and (max-width: 600px) {
+  .flex-parent{
+    display: flex;
+    flex-direction: column;
+    height: 1000px;
+    justify-content: start;
+    height: 1000px;
+  } 
+
+  .block {
+    width: 50px;
+  }
 }

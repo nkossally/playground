@@ -16,13 +16,15 @@ export const FlexChild = () => {
   };
   const style = useMemo(
     () => ({
-      "flexGrow": `${flexGrow}`,
+      flexGrow: `${flexGrow}`,
       "flexShrink": `${flexShrink}`,
       "flexBasis": `${flexBasis}`,
-      margin: "0px 5px 0px 5px",
+      margin: "5px 5px 5px 5px",
       "backgroundColor": "#36d2df",
       "borderRadius": 5,
       "boxShadow": "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+      width: "fit-content",
+      padding: "2px 2px 2px 2px"
     }),
     [flexGrow, flexShrink, flexBasis]
   );
