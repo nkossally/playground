@@ -160,6 +160,10 @@ q .toggle-container {
   font-size: calc(12px + 2vmin);
 }
 
+.node-children{
+  margin-left: 20px;
+}
+
 @media screen and (max-width: 600px) {
   .flex-parent{
     display: flex;
