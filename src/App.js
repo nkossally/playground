@@ -3,13 +3,13 @@ import { FlexGrowAndShrinkSection } from "./sections/FlexGrowAndShrinkSection";
 import { NodeWrapper, Node } from "./components/TreeSelect";
 import "./style.scss";
 
-const node1 = new Node
-const node2 = new Node
-const node3 = new Node
-const node4 = new Node
-const node5= new Node
-const node6 = new Node
-const node7 = new Node
+const node1 = new Node("A")
+const node2 = new Node("B")
+const node3 = new Node("C")
+const node4 = new Node("D")
+const node5= new Node("E")
+const node6 = new Node("F")
+const node7 = new Node("G")
 
 node1.children = [node2, node3]
 node2.parent = node1

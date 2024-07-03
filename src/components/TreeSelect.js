@@ -1,16 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 
 export class Node {
-  constructor() {
+  constructor(val) {
     this.children = [];
     this.parent = null;
-    this.defaultChecked = false;
     this.checked = false;
-  }
-
-  setChecked = (bool) =>{
-    console.log("pizza")
-    this.checked = bool;
+    this.ref = undefined;
+    this.val = val;
   }
 
 }  
@@ -18,52 +14,78 @@ export class Node {
 
 
 
-export const NodeWrapper = ({ node, initialCheckedState }) => {
-  const [checkedState, setCheckedState] = useState(initialCheckedState);
+export const NodeWrapper = ({ node }) => {
   const [count, setCount] = useState(0);
 
-  console.log(node.checked)
-
   const ref = useRef(0);
+  node.ref = ref;
 
+  const checkAllChildren = (root) =>{
+    let childUnchecked = false
 
-
-  const handleClick = () => {
-
-    const passDownState = (root, bool) =>{
-
-      root.checked = bool
-      setCount(count + 1)
-
-      console.log(root)
-
-      root.children.forEach(child =>{
-        passDownState(child, bool)
+    const helper = (currNode) =>{
+      currNode.children.forEach(child =>{
+        if(!child.checked){
+          childUnchecked = true
+        }
+        checkAllChildren(child)
       })
     }
-    // passDownState(node, !checkedState)
-    passDownState(node, !node.checked)
+
+    helper(root)
+
+
+    if(root.checked){
+      if(childUnchecked){
+        console.log("setting indeterminate", root.val)
+        root.ref.current.indeterminate = true;
+      } else{
+        console.log("setting not indeterminate", root.val)
+
+        root.ref.current.indeterminate = false;
+      }
+    }
 
   }
 
-  useEffect(() => {
-    console.log("whate")
-    // node.checked = checkedState
-  }, [node.defaultChecked, node.checked, count]);
+  const passUp = (root) => {
+    if(!root) return;
+    console.log(root)
 
-  useEffect(() => {
-  }, [node.checked]);
+    checkAllChildren(root)
+
+    passUp(root.parent)
+  } 
+
+  const passDownState = (root, bool) =>{
+
+    root.checked = bool
+    root.ref.current.indeterminate = false;
+
+    setCount(count + 1)
+
+    root.children.forEach(child =>{
+      passDownState(child, bool)
+    })
+  }
+
+  const handleClick = () => {
+    const newState = !node.checked
+    
+    passDownState(node, newState)
+    passUp(node.parent)
+
+  }
 
   return (
     <div>
       <input
         type="checkbox"
         // id="tree-select-input"
-        defaultChecked={node.defaultChecked}
         checked={node.checked}
-        onClick={handleClick}
+        onChange={handleClick}
         ref={ref}
-      ></input>
+      ></input>{node.val}
       <div className="node-children">
         {node.children.map((child, i) => {
           return <NodeWrapper node={child} key={`child-${i}`}/>;
