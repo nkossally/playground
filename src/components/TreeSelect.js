@@ -8,11 +8,7 @@ export class Node {
     this.ref = undefined;
     this.val = val;
   }
-
 }  
-
-
-
 
 export const NodeWrapper = ({ node }) => {
   const [count, setCount] = useState(0);
@@ -20,7 +16,7 @@ export const NodeWrapper = ({ node }) => {
   const ref = useRef(0);
   node.ref = ref;
 
-  const checkAllChildren = (root) =>{
+  const checkAllChildrenForUnchecked = (root) =>{
     let childUnchecked = false
 
     const helper = (currNode) =>{
@@ -28,33 +24,30 @@ export const NodeWrapper = ({ node }) => {
         if(!child.checked){
           childUnchecked = true
         }
-        checkAllChildren(child)
+        childUnchecked = childUnchecked || checkAllChildrenForUnchecked(child)
       })
     }
 
     helper(root)
 
+    return  childUnchecked;
+
+  }
+
+  const maybeSetParentsIndeterminate = (root) => {
+    if(!root) return;
+
+    const childUnchecked = checkAllChildrenForUnchecked(root)
 
     if(root.checked){
       if(childUnchecked){
-        console.log("setting indeterminate", root.val)
         root.ref.current.indeterminate = true;
-      } else{
-        console.log("setting not indeterminate", root.val)
-
+      } else {
         root.ref.current.indeterminate = false;
       }
     }
 
-  }
-
-  const passUp = (root) => {
-    if(!root) return;
-    console.log(root)
-
-    checkAllChildren(root)
-
-    passUp(root.parent)
+    maybeSetParentsIndeterminate(root.parent)
   } 
 
   const passDownState = (root, bool) =>{
@@ -71,10 +64,11 @@ export const NodeWrapper = ({ node }) => {
 
   const handleClick = () => {
     const newState = !node.checked
+    node.ref.current.indeterminate = false;
     
     passDownState(node, newState)
-    passUp(node.parent)
 
+    maybeSetParentsIndeterminate(node.parent)
   }
 
   return (
